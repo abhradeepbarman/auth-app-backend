@@ -99,7 +99,7 @@ exports.login = async(req, res) => {
             user.password = undefined;
 
             const options = {
-                expiresIn: new Date( Date.now() + 3 * 24 * 60 * 60 * 1000),
+                expires: new Date(Date.now() + 3 * 24 *60 * 60 * 1000),
                 httpOnly: true,
             }
             
@@ -110,6 +110,13 @@ exports.login = async(req, res) => {
                 user,
                 message: "User loggen in successfully"
             })
+
+            // res.status(200).json({
+            //     success: true,
+            //     token,
+            //     user,
+            //     message: "User loggen in successfully"
+            // })
         }
         else {
             //password not match
